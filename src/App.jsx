@@ -9,8 +9,8 @@ function App() {
   const [enteredPassword, setEnteredPassword] = useState('')
   const [loginUsername, SetLoginUsername] = useState('')
   const [loginPassword, SetLoginPassword] = useState('')
-  const [loggedUser, setLoggedUser]= useState([{id:1,username:'tek'}])
-  const [token, setToken] = useState('a')
+  const [loggedUser, setLoggedUser]= useState([])
+  const [token, setToken] = useState('')
   const [appliancesList, setAppliancesList] = useState([])
   const [applianceDetails, setApplianceDetails] = useState([])
   //Sign up function// Create on server.cjs an end point '/api/v1/users' accepting get request
