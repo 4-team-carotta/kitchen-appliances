@@ -1,4 +1,5 @@
 const client = require('./client.cjs');
+const { createUser } = require('./users.cjs');
 
 const dropTables = async () =>{
   try{
@@ -56,6 +57,13 @@ const syncAndSeed = async () =>{
 
   await createTables();
   console.log(`TABLES CREATED`);
+
+  await createUser('bobby','bobby1');
+  await createUser('timmy','timmy1');
+  await createUser('sally','sally1');
+  await createUser('callie','callie1');
+  await createUser('jenny','jenny1');
+  console.log(`USERS CREATED`);
 
   await client.end();
   console.log(`DISCONNECTED FROM THE DB`);
