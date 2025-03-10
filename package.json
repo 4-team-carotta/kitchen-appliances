@@ -1,16 +1,22 @@
 {
   "dependencies": {
+    "bcrpyt": "^2.0.0",
+    "bcrypt": "^5.1.1",
     "express": "^4.21.2",
     "gitignore": "^0.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "kitchen-appliances": "file:",
     "nodemon": "^3.1.9",
     "pg": "^8.13.3"
   },
   "name": "kitchen-appliances",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server.cjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.cjs",
+    "dev": "nodemon server.cjs",
+    "seed": "node db/client.cjs"
   },
   "keywords": [],
   "author": "",
