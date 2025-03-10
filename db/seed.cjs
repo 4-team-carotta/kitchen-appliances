@@ -22,7 +22,7 @@ const createTables = async () =>{
       CREATE TABLE users(
       id SERIAL PRIMARY KEY,
       username VARCHAR(30) UNIQUE NOT NULL,
-      password VARCHAR(60) NOT NULL);
+      password VARCHAR(255) NOT NULL);
       
       CREATE TABLE kitchen_appliances(
       id SERIAL PRIMARY KEY,
@@ -72,12 +72,15 @@ const syncAndSeed = async () =>{
   await createAppliances('Ice Forever','ice-machine','white','3','false');
   await createAppliances('Kitchen-helper','refrigerator','red','4','true');
   await createAppliances('Kitchen-helper','dishwasher','black','2','false');
+ console.log(`APPLIANCES CREATED');
 
   await createCarts(bobby.id,'true');
   await createCarts(bobby.id,'false');
   await createCarts(sally.id,'true');
   await createCarts(timmy.id,'false');
   await createCarts(jenny.id,'true');
+  console.log(`CARTS CREATED`);
+
 
   await client.end();
   console.log(`DISCONNECTED FROM THE DB`);
