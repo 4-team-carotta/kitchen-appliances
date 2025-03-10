@@ -2,6 +2,7 @@ const client = require('./client.cjs');
 const { createUser } = require('./users.cjs');
 const { createCarts } = require('./carts.cjs');
 const { createAppliances } = require('./appliances.cjs');
+const { createAppliancesCarts } =require('./appliances-carts.cjs');
 
 const dropTables = async () =>{
   try{
@@ -67,20 +68,26 @@ const syncAndSeed = async () =>{
   const jenny = await createUser('jenny','jenny1');
   console.log(`USERS CREATED`);
 
-  await createAppliances('Magic Blender','blender','stainless-steel','4','true');
-  await createAppliances('CoffeePal','coffee-maker','stainless-steel','5','true');
-  await createAppliances('Ice Forever','ice-machine','white','3','false');
-  await createAppliances('Kitchen-helper','refrigerator','red','4','true');
-  await createAppliances('Kitchen-helper','dishwasher','black','2','false');
- console.log(`APPLIANCES CREATED');
+  const blender = await createAppliances('Magic Blender','blender','stainless-steel','4','true');
+  const coffee = await createAppliances('CoffeePal','coffee-maker','stainless-steel','5','true');
+  const ice = await createAppliances('Ice Forever','ice-machine','white','3','false');
+  const fridge = await createAppliances('Kitchen-helper','refrigerator','red','4','true');
+  const dishwasher = await createAppliances('Kitchen-helper','dishwasher','black','2','false');
+  console.log(`APPLIANCES CREATED`)
 
-  await createCarts(bobby.id,'true');
-  await createCarts(bobby.id,'false');
-  await createCarts(sally.id,'true');
-  await createCarts(timmy.id,'false');
-  await createCarts(jenny.id,'true');
+  const cartOne = await createCarts(bobby.id,'true');
+  const cartTwo = await createCarts(bobby.id,'false');
+  const cartThree = await createCarts(sally.id,'true');
+  const cartFour = await createCarts(timmy.id,'false');
+  const cartFive = await createCarts(jenny.id,'true');
   console.log(`CARTS CREATED`);
 
+  await createAppliancesCarts(blender.id, cartOne.id);
+  await createAppliancesCarts(coffee.id, cartTwo.id);
+  await createAppliancesCarts(ice.id, cartThree.id);
+  await createAppliancesCarts(fridge.id, cartFour.id);
+  await createAppliancesCarts(dishwasher.id, cartFive.id);
+  console.log(`APPLIANCES CARTS CREATED`)
 
   await client.end();
   console.log(`DISCONNECTED FROM THE DB`);
