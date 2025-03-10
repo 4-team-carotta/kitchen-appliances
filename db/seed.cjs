@@ -1,5 +1,6 @@
 const client = require('./client.cjs');
 const { createUser } = require('./users.cjs');
+const { createAppliances } = require('./appliances.cjs');
 
 const dropTables = async () =>{
   try{
@@ -64,6 +65,15 @@ const syncAndSeed = async () =>{
   await createUser('callie','callie1');
   await createUser('jenny','jenny1');
   console.log(`USERS CREATED`);
+
+  await createAppliances('Magic Blender','blender','stainless-steel','4','true');
+  await createAppliances('CoffeePal','coffee-maker','stainless-steel','5','true');
+  await createAppliances('Ice Forever','ice-machine','white','3','false');
+  await createAppliances('Kitchen-helper','refrigerator','red','4','true');
+  await createAppliances('Kitchen-helper','dishwasher','black','2','false');
+  console.log(`APPLIANCES CREATED`);
+
+
 
   await client.end();
   console.log(`DISCONNECTED FROM THE DB`);
